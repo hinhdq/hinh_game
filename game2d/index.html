@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Catcher</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Âm thanh -->
+    <audio id="soundCorrect" src="correct.mp3"></audio>
+    <audio id="soundWrong" src="wrong.mp3"></audio>
+</head>
+<body>
+
+<!-- Màn hình Start -->
+<div id="startScreen">
+    <h1>Math Catcher</h1>
+    <p>Hứng đáp án đúng để ghi điểm!</p>
+    <button id="startBtn" class="btn">Start Game</button>
+</div>
+
+<!-- Khu vực Game -->
+<div id="gameArea">
+
+    <div id="question">1 + 1 = ?</div>
+    <div id="score">Score: 0</div>
+
+    <!-- Nhân vật -->
+    <div id="player">
+        <div class="head">
+            <div class="hair"></div>
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="blush left"></div>
+            <div class="blush right"></div>
+        </div>
+        <div class="body">You</div>
+        <div class="feet"><div class="foot"></div><div class="foot"></div></div>
+    </div>
+
+    <!-- Đáp án rơi -->
+    <div id="a1" class="answer"></div>
+    <div id="a2" class="answer"></div>
+    <div id="a3" class="answer"></div>
+
+    <!-- Particle -->
+    <div id="particles"></div>
+
+    <!-- Game Over -->
+    <div id="gameover">Game Over!</div>
+    <button id="restartBtn">Restart</button>
+
+    <!-- Nút điều khiển di chuyển -->
+    <div id="controls">
+        <div class="controlBtn" id="leftBtn">◀</div>
+        <div class="controlBtn" id="rightBtn">▶</div>
+    </div>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
