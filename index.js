@@ -1,14 +1,17 @@
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+// KHỞI TẠO CANVAS
+const canvas = document.querySelector('canvas')   //Lấy thẻ <canvas> trong HTML. 
+const c = canvas.getContext('2d')                 //Tạo context 2D để vẽ đồ họa game.
 
-canvas.width = 1024
+canvas.width = 1024                               //Đặt kích thước canvas (giống độ phân giải game).
 canvas.height = 576
 
-c.fillRect(0, 0, canvas.width, canvas.height)
+c.fillRect(0, 0, canvas.width, canvas.height)    //Tô đen màn hình.
 
-const gravity = 0.7
+// KHỞI TẠO PHỤ TRỢ GAME
+const gravity = 0.7                             //Trọng lực để nhân vật rơi xuống.
 
-const background = new Sprite({
+//KHỞI TẠO BACKGROUND
+const background = new Sprite({                 //Tạo nền game
   position: {
     x: 0,
     y: 0
@@ -16,7 +19,8 @@ const background = new Sprite({
   imageSrc: './img/background.png'
 })
 
-const shop = new Sprite({
+//KHỞI TẠO SHOP
+const shop = new Sprite({                      //Shop có animation (6 frame), scale to lên.
   position: {
     x: 600,
     y: 128
@@ -26,7 +30,8 @@ const shop = new Sprite({
   framesMax: 6
 })
 
-const player = new Fighter({
+//TẠO PLAYER
+const player = new Fighter({                    //position: vị trí nhân vật. velocity: tốc độ — dùng để di chuyển & nhảy. imageSrc: ảnh đầu tiên (Idle). framesMax: số frame animation Idle. scale: phóng to nhân vật. offset: dùng để chỉnh vị trí hitbox so với sprite. sprites: chứa toàn bộ animation (Idle, Run, Jump…) attackBox: hộp tấn công để kiểm collision.
   position: {
     x: 0,
     y: 0
@@ -86,7 +91,8 @@ const player = new Fighter({
   }
 })
 
-const enemy = new Fighter({
+//TẠO ENEMY
+const enemy = new Fighter({                    //Cách thức khá giống player.
   position: {
     x: 400,
     y: 100
@@ -147,6 +153,7 @@ const enemy = new Fighter({
   }
 })
 
+//LƯU TRẠNG THÁI PHÍM(KIỂM TRA PHÍM NÀO ĐANG ĐC GIỮ)
 console.log(player)
 
 const keys = {
@@ -164,9 +171,12 @@ const keys = {
   }
 }
 
+//GIẢM THỜI GIAN TRẬN ĐẤU
 decreaseTimer()
 
-function animate() {
+
+//HÀM ANIMATE – GAME LOOP CHÍNH
+function animate() {                                              //Lặp game 60 lần/giây.
   window.requestAnimationFrame(animate)
   c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
